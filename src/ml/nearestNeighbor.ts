@@ -51,13 +51,22 @@ export function computeMinMax(data: any[]) {
 
 function normalizeRow(
     row: any,
-    stats: Record<FeatureKey, { min: number; max: number }>,
+    stats: Record<string, { min: number; max: number }>,
 ) {
     const normalized: Record<FeatureKey, number> = {} as any;
 
     for (const key of FEATURES) {
-        const { min, max } = stats[key];
-        normalized[key] = max === min ? 0 : (row[key] - min) / (max - min);
+        const stat = stats[key];
+
+        if (!stat) {
+            normalized[key] = 0;
+            continue;
+        }
+
+        const { min, max } = stat;
+        const value = Number(row[key]) || 0;
+
+        normalized[key] = max === min ? 0 : (value - min) / (max - min);
     }
 
     return normalized;

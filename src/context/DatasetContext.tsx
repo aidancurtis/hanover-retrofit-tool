@@ -40,7 +40,7 @@ export function DatasetProvider({ children }: any) {
                 setContractorData(e);
 
                 if (b && b.length > 0) {
-                    const stats = computeMinMax(b);
+                    const stats = computeMinMax(a);
                     setBuildingDataStats(stats);
                 }
             } catch (error) {

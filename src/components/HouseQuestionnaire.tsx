@@ -25,6 +25,7 @@ export function HouseQuestionnaire() {
         annualEnergyConsumption?: string;
         annualElectricityConsumption?: string;
         annualUtilityBill?: string;
+        preferences?: string;
     }>({});
 
     const comfortQuestions = [
@@ -132,6 +133,7 @@ export function HouseQuestionnaire() {
             annualEnergyConsumption?: string;
             annualElectricityConsumption?: string;
             annualUtilityBill?: string;
+            preferences?: string;
         } = {};
 
         if (
@@ -173,6 +175,13 @@ export function HouseQuestionnaire() {
             newErrors.yearBuilt = "Please enter a valid year";
         }
 
+        const hasPreferenceError = comfortQuestions.some(
+            (item) => !details.preferences?.[item.id],
+        );
+
+        if (hasPreferenceError) {
+            newErrors.preferences = "Please answer all preference questions";
+        }
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors);
             window.scrollTo({ top: 0, behavior: "smooth" });
@@ -212,9 +221,7 @@ export function HouseQuestionnaire() {
                     </h3>
 
                     <div className="space-y-2">
-                        <Label htmlFor="squareFootage">
-                            Square Footage <span className="text-red-500">*</span>
-                        </Label>
+                        <Label htmlFor="squareFootage">Square Footage</Label>
                         <Input
                             id="squareFootage"
                             type="number"
@@ -379,6 +386,9 @@ export function HouseQuestionnaire() {
                             </div>
                         </div>
                     ))}
+                    {errors.preferences && (
+                        <p className="text-sm text-red-500">{errors.preferences}</p>
+                    )}
                 </div>
 
                 <div className="flex justify-between pt-4">

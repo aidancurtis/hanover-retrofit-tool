@@ -58,7 +58,7 @@ export function UserDetailsProvider({ children }: { children: ReactNode }) {
             buildingData,
             userHouseSpecs,
             buildingDataStats,
-            1,
+            3,
         );
 
         const bldg_id = nn[0].bldg_id;

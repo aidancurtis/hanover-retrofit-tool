@@ -84,7 +84,6 @@ export function scoreRetrofits(
 ) {
     // Get row from retrofitPercentChange
     const result = retrofitPercentChange.find((item) => item.bldg_id === bldg_id);
-    console.log(result);
 
     // Map retrofits by id
     const map = new Map();
@@ -110,8 +109,6 @@ export function scoreRetrofits(
             timeline: item.timeline,
             invasiveness: item.invasiveness,
         };
-
-        console.log("Retrofit weights: ", retrofitWeights);
 
         const scores = computeScore(retrofitWeights, preferenceWeights);
 
