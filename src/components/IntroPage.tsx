@@ -39,7 +39,8 @@ export function IntroPage() {
             </Button>
 
             <p className="text-sm text-muted-foreground">
-                Takes 2 minutes • Get two tailored scenarios with local contractor info
+                Takes 2 minutes • Get retrofit suggestions for three tailored scenarios
+                with local contractor info
             </p>
         </div>
     );
