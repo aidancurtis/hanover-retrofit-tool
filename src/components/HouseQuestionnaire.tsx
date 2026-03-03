@@ -285,7 +285,6 @@ export function HouseQuestionnaire() {
                                 {errors.annualEnergyConsumption}
                             </p>
                         )}
-                        <p className="text-sm text-muted-foreground">Some text</p>
                     </div>
 
                     {/* Electricity Consumption */}
@@ -314,7 +313,6 @@ export function HouseQuestionnaire() {
                                 {errors.annualElectricityConsumption}
                             </p>
                         )}
-                        <p className="text-sm text-muted-foreground">Some text</p>
                     </div>
 
                     {/* Utility Bill */}
@@ -337,7 +335,6 @@ export function HouseQuestionnaire() {
                         {errors.annualUtilityBill && (
                             <p className="text-sm text-red-500">{errors.annualUtilityBill}</p>
                         )}
-                        <p className="text-sm text-muted-foreground">Some text</p>
                     </div>
                 </div>
 
