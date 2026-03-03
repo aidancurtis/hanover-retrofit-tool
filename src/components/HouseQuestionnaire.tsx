@@ -269,7 +269,7 @@ export function HouseQuestionnaire() {
                         <Input
                             id="annualEnergyConsumption"
                             type="number"
-                            // placeholder="1500"
+                            placeholder="e.g., 50000"
                             value={details.houseDetails?.annualEnergyConsumption || ""}
                             onChange={(e) => {
                                 handleHouseDetailsChange(
@@ -295,7 +295,7 @@ export function HouseQuestionnaire() {
                         <Input
                             id="annualElectricityConsumption"
                             type="number"
-                            // placeholder="e.g., 1985"
+                            placeholder="e.g., 2000"
                             value={details.houseDetails?.annualElectricityConsumption || ""}
                             onChange={(e) => {
                                 handleHouseDetailsChange(
@@ -321,7 +321,7 @@ export function HouseQuestionnaire() {
                         <Input
                             id="annualUtilityBill"
                             type="number"
-                            // placeholder="e.g., 1985"
+                            placeholder="e.g., 5000"
                             value={details.houseDetails?.annualUtilityBill || ""}
                             onChange={(e) => {
                                 handleHouseDetailsChange(

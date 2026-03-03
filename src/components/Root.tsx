@@ -11,9 +11,7 @@ export function Root() {
                     <div className="text-center mb-8">
                         <div className="flex items-center justify-center gap-3 mb-4">
                             <Leaf className="w-10 h-10 text-green-600" />
-                            <h1 className="text-green-900">
-                                Hanover Home Retrofit Calculator
-                            </h1>
+                            <h1 className="text-green-900">Hanover Home Retrofit Tool</h1>
                         </div>
                     </div>
 
