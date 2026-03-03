@@ -1,0 +1,163 @@
+[
+  {
+    "﻿upgrade": 1,
+    "in.upgrade_name": "Natural Gas Furnace 95% AFUE for All Dwellings with Ducts",
+    "restock_description": "This upgrade replaces the heating system of applicable dwellings with a high-efficiency natural gas furnace (95% AFUE). Applicable dwellings must have a non-shared, ducted HVAC system that is heated either by electricity (including heat pumps), natural gas (if system is less efficient), 9 propane, or fuel oil (no wood or other fuel).",
+    "short.upgrade_name": "Natural Gas Furnace Upgrade ",
+    "short_description": "Replaces your existing furnace with a 95% AFUE high-efficiency natural gas model. This system converts more fuel into usable heat, reducing heating energy use"
+  },
+  {
+    "﻿upgrade": 2,
+    "in.upgrade_name": "Propane Furnace 95% AFUE or Fuel Oil Furnace 88% AFUE",
+    "restock_description": "This upgrade replaces existing ducted propane and fuel oil furnaces from low efficiency to high efficiency (95% AFUE for propane and 88% AFUE for fuel oil)",
+    "short.upgrade_name": "High-Efficiency Propane/Oil Furnace",
+    "short_description": "Upgrades your propane or fuel oil furnace to a higher-efficiency unit (95% AFUE propane / 88% AFUE oil). This could reduce fuel consumption and operating costs while maintaining consistent indoor comfort."
+  },
+  {
+    "﻿upgrade": 3,
+    "in.upgrade_name": "Minimum Efficiency Furnaces and Air Conditioners Circa 2025",
+    "restock_description": "This upgrade represents a reference case to replace any ducted space heating and cooling equipment at wear-out. It replaces equipment like-for-like with units that meet at least federal minimum efficiency standards as of 2025. This means existing equipment below the efficiency standard are brought up to standard while higher efficiency equipment are replaced with the same equipment (due to wear-out). The federal minimum standard is: - 80% AFUE for natural gas and propane furnaces, - 83% AFUE for fuel oil furnace, - SEER2 13.4 for central AC in southern states, - SEER2 14.3 for northern states, and - SEER2 14.3, 7.5 HSPF2 for ducted air-source heat pump.",
+    "short.upgrade_name": "Standard Heating & AC Replacements",
+    "short_description": "Replaces aging heating and cooling equipment with systems that meet current federal minimum efficiency standards."
+  },
+  {
+    "﻿upgrade": 4,
+    "in.upgrade_name": "Typical Cold Climate Ducted Air Source Heat Pump Circa 2025",
+    "restock_description": "This upgrade replaces the HVAC system of applicable dwellings with a variable speed ducted airsource heat pump (ASHP) (HSPF2 8.5, SEER2 17.5) with electric resistance backup. Applicable dwellings must have a ducted HVAC system heated by electricity, natural gas, propane or fuel oil (no wood or other fuel). ",
+    "short.upgrade_name": "Cold Climate Air-Source Heat Pump",
+    "short_description": "Installs a high-efficiency electric heat pump designed to operate effectively in colder temperatures."
+  },
+  {
+    "﻿upgrade": 5,
+    "in.upgrade_name": "Dual Fuel Heat Pump System",
+    "restock_description": "This upgrade replaces the HVAC system of applicable dwellings with a dual fuel system consisting of an air source heat pump (ASHP) (HSPF2 7.8, SEER2 15.2) and a backup natural gas furnace (92% AFUE if in IECC climate zones 1-4 and 95% AFUE everywhere else). Applicable dwellings must have a ducted, non-shared HVAC system and have access to natural gas.",
+    "short.upgrade_name": "Dual Fuel Heat Pump System",
+    "short_description": "Combines an electric heat pump with a high-efficiency gas furnace backup. The system automatically switches between electric and gas heating depending on outdoor temperatures to optimize efficiency and comfort."
+  },
+  {
+    "﻿upgrade": 6,
+    "in.upgrade_name": "Single-Speed Geothermal Heat Pump with Thermally Enhanced Grout and Pipes",
+    "restock_description": "This upgrade replaces the HVAC system of applicable dwellings with a single-speed compressor, variable speed air handler, waterto-air geothermal heat pump (GHP) (3.8 COP, 18.6 EER) with vertical ground heat exchanger. Applicable dwellings must have a ducted HVAC system heated by electricity, natural gas, propane or fuel oil (no wood or other fuel). They must be within a low-rise building with less than 8 stories. Their ground thermal conductivity must be more than 0.8.",
+    "short.upgrade_name": "Single-Stage Geothermal System",
+    "short_description": "Installs a ground-source (geothermal) heat pump that uses stable underground temperatures for heating and cooling. This significantly improves efficiency compared to conventional HVAC systems and may reduces long-term energy costs."
+  },
+  {
+    "﻿upgrade": 7,
+    "in.upgrade_name": "Dual-Speed Geothermal Heat Pump with Thermally Enhanced Grout and Pipes",
+    "restock_description": "This upgrade replaces the HVAC system of applicable dwellings with either ducted heating or ducted cooling to a two-speed compressor, variable speed air handler, water-to-air geothermal heat pump (GHP) (4.0 COP, 20.5 EER) with vertical ground heat exchanger. Applicable dwellings must have a\nducted HVAC system heated by electricity, natural gas, propane or fuel oil (no wood or other fuel).",
+    "short.upgrade_name": "Two-Stage Geothermal System",
+    "short_description": "Installs a ground-source (geothermal) heat pump with two operating stages that adjust heating and cooling output based on demand. By running at a lower stage most of the time and increasing output only when needed, this system operates more efficiently than single-stage equipment."
+  },
+  {
+    "﻿upgrade": 8,
+    "in.upgrade_name": "Variable-Speed Geothermal Heat Pump with Thermally Enhanced Grout and Pipes",
+    "restock_description": "This upgrade replaces the HVAC system of applicable dwellings with a variable-speed compressor, variable-speed air handler, waterto-air geothermal heat pump (GHP) (4.0 COP, 20.5 EER) with vertical ground heat exchanger. Applicable dwellings must have a ducted HVAC system heated by electricity, natural gas, propane or fuel oil (no wood or other fuel).",
+    "short.upgrade_name": "Variable-Speed Geothermal System",
+    "short_description": "Installs a ground-source (geothermal) heat pump with variable-speed operation that continuously adjusts output to match your home’s heating and cooling needs. This provides the highest level of comfort, quieter performance, and maximum energy efficiency compared to single- or two-stage systems."
+  },
+  {
+    "﻿upgrade": 9,
+    "in.upgrade_name": "Heat Pump Water Heater",
+    "restock_description": "This upgrade installs a 240V heat pump water heater (HPWH) to all dwelling units that are not currently using a HPWH or a solar thermal water heater. The equipment has a Uniform Energy Factor (UEF) no less than 3.3 and a First Hour Rating (FHR) no less than 45 gal/h.",
+    "short.upgrade_name": "Heat Pump Water Heater",
+    "short_description": "Replaces a standard water heater with an electric heat pump water heater."
+  },
+  {
+    "﻿upgrade": 10,
+    "in.upgrade_name": "High Efficiency Natural Gas Tankless Water Heater",
+    "restock_description": "This upgrade installs a high efficiency condensing natural gas tankless water heater with a Uniform Energy Factor (UEF) of 0.95 and a burner capacity of 199 kBtu/h to all dwelling units that are not currently using solar thermal, heat pump, or gas tankless water heaters and have access to gas.",
+    "short.upgrade_name": "High-Efficiency Gas Water Heater",
+    "short_description": "Installs a high-efficiency condensing or tankless gas water heater. These systems heat water on demand and reduce standby heat losses."
+  },
+  {
+    "﻿upgrade": 11,
+    "in.upgrade_name": "Air Sealing with Drill and Fill Wall Insulation",
+    "restock_description": "This upgrade air seals dwellings down to 5 ACH50 if they have an infiltration rate of ≥6 ACH50.",
+    "short.upgrade_name": "Whole-Home Air Sealing",
+    "short_description": "Seals air leaks in walls, ceilings, and around penetrations to reduce uncontrolled air infiltration. This improves indoor comfort, lowers heating and cooling loads, and can reduce moisture and draft issues."
+  },
+  {
+    "﻿upgrade": 12,
+    "in.upgrade_name": "Attic Floor Insulation for Unfinished Attics",
+    "restock_description": "This upgrade brings the attic floor insulation in unfinished attics to the prescriptive level from IECC 2021 (R-49 for IECC climate zone 1 and R-60 everywhere else) where the existing insulation is R10 or more less than the",
+    "short.upgrade_name": "Attic Floor Insulation Upgrade",
+    "short_description": "Increases attic insulation to modern code levels to reduce heat transfer through the roof. This helps maintain more stable indoor temperatures and reduces heating and cooling energy use."
+  },
+  {
+    "﻿upgrade": 13,
+    "in.upgrade_name": "Duct Sealing and Insulation",
+    "restock_description": "This upgrade seals and insulates HVAC ducts from more than 6% duct leakage to outside and less than R-6 duct insulation to 5% duct leakage to the outside and R8 duct insulation.",
+    "short.upgrade_name": "Duct Sealing & Insulation",
+    "short_description": "Seals duct leaks and improves duct insulation to prevent conditioned air from escaping. This increases HVAC system efficiency and ensures more consistent room temperatures."
+  },
+  {
+    "﻿upgrade": 14,
+    "in.upgrade_name": "Drill and Fill Wall Insulation with Air Sealing",
+    "restock_description": "This upgrade applies R-13 drilland-fill insulation to uninsulated exterior wood-stud walls. It also includes env_001 to air seal dwellings down to 5 ACH50 if they have an infiltration rate of ≥6 ACH50. An applicable dwelling may receiv",
+    "short.upgrade_name": "Air Sealing + Wall Insulation",
+    "short_description": "Combines air sealing with added insulation inside exterior walls. This reduces heat loss through wall cavities and improves overall building envelope performance."
+  },
+  {
+    "﻿upgrade": 15,
+    "in.upgrade_name": "Air Sealing, Attic Floor Insulation, and Duct sealing",
+    "restock_description": "This upgrade applies air sealing (env_001), attic floor insulation (env_002), and duct sealing and insulation (env_003) to applicable dwelling units. An applicable dwelling may receive some or all individual measures.",
+    "short.upgrade_name": "Air Sealing + Attic + Duct Insulation Improvements",
+    "short_description": "Addresses multiple major sources of energy loss by upgrading insulation and sealing air leakage pathways. This comprehensive approach improves system efficiency and overall home comfort."
+  },
+  {
+    "﻿upgrade": 16,
+    "in.upgrade_name": "Air Sealing, Attic Floor Insulation, Duct sealing, and Drill-and-Fill Wall Insulation",
+    "restock_description": "This upgrade applies air sealing (env_001), attic floor insulation (env_002), duct sealing and insulation (env_003), and drilland-fill wall insulation (part of pkg_001) to applicable dwelling units. An applicable dwelling may receive some or all individual measures.",
+    "short.upgrade_name": "Comprehensive Home Insulation Package",
+    "short_description": "Includes air sealing, attic insulation, duct improvements, and wall insulation where applicable. This significantly reduces heating and cooling demand and enhances long-term energy savings."
+  },
+  {
+    "﻿upgrade": 17,
+    "in.upgrade_name": "ENERGY STAR Windows",
+    "restock_description": "This upgrade replaces any existing windows with less than the performance level specified by ENERGY STAR Version 7.0 (by climate regions) with windows meeting this performance level. This upgrade includes the air infiltration reduction benefit from window replacement.",
+    "short.upgrade_name": "ENERGY STAR Window Replacement",
+    "short_description": "Replaces existing windows with ENERGY STAR–certified models that meet modern thermal performance standards. This reduces heat loss, improves comfort near windows, and lowers HVAC demand."
+  },
+  {
+    "﻿upgrade": 18,
+    "in.upgrade_name": "Dual-Speed Geothermal Heat Pump with Thermally Enhanced Grout and Pipes, Air Sealing, Attic Floor Insulation, and Duct Sealing",
+    "restock_description": "This upgrade combines the dualspeed geothermal heat pump (hvac_007) with envelope improvements (pkg_002), which consist of air sealing, attic floor insulation, and duct sealing and insulation.",
+    "short.upgrade_name": "Dual-Speed Geothermal + Home Insulation Package",
+    "short_description": "Combines a high-efficiency geothermal heat pump with key envelope improvements. Together, these upgrades reduce overall energy demand and maximize system performance."
+  },
+  {
+    "﻿upgrade": 24,
+    "in.upgrade_name": "HVAC Demand Flexibility - On-peak Load Shedding, 2F Offset",
+    "restock_description": "This upgrade curtails loads by setting back the HVAC thermostat setpoints by 2°F throughout a onehour on-peak window.",
+    "short.upgrade_name": "Peak Hour Setpoint Thermostat  Adjustmentt (2°)",
+    "short_description": "Adjust  the thermostat by 2°F during peak electricity demand periods. This temporarily reduces HVAC energy use to lower grid strain with minimal impact on comfort."
+  },
+  {
+    "﻿upgrade": 25,
+    "in.upgrade_name": "HVAC Demand Flexibility - Pre-peak Load Shifting, 2F Offset, 4hr Pre-peak Duration",
+    "restock_description": "This upgrade shifts loads by changing the HVAC thermostat setpoints by 2°F throughout a fourhour pre-peak window to pre-heat or pre-cool the dwelling.",
+    "short.upgrade_name": "Pre-Heating/Cooling  (2°, 4-Hour)",
+    "short_description": "Pre-heat or pre-cool the home before peak demand by adjusting temperatures 2°F for several hours. This shifts energy use to lower-demand times while maintaining comfort during peak periods."
+  },
+  {
+    "﻿upgrade": 26,
+    "in.upgrade_name": "HVAC Demand Flexibility - On-peak Load Shedding, 4F Offset",
+    "restock_description": "This upgrade curtails loads by setting back the HVAC thermostat setpoints by 4°F throughout a onehour on-peak window.",
+    "short.upgrade_name": "Peak Hour Setpoint Thermostat  Adjustment (4°)",
+    "short_description": "Temporarily adjust  the thermostat by 4°F during peak electricity demand periods. This temporarily reduces HVAC energy use to lower grid strain with minimal impact on comfort."
+  },
+  {
+    "﻿upgrade": 27,
+    "in.upgrade_name": "HVAC Demand Flexibility - Pre-peak Load Shifting, 4F Offset, 4hr Pre-peak Duration",
+    "restock_description": "This upgrade shifts loads by changing the HVAC thermostat setpoints by 4°F throughout a fourhour pre-peak window to pre-heat or pre-cool the dwelling.",
+    "short.upgrade_name": "Pre-Heating/Cooling (4°, 4-Hour)",
+    "short_description": "Pre-heat or pre-cool the home before peak periods. This significantly shifts HVAC load away from high-demand hours."
+  },
+  {
+    "﻿upgrade": 28,
+    "in.upgrade_name": "HVAC Demand Flexibility - Pre-peak Load Shifting, 2F Offset, 1hr Pre-peak Duration",
+    "restock_description": "This upgrade shifts loads by changing the HVAC thermostat setpoints by 2°F throughout a one-hour pre-peak window to pre-heat or pre-cool the dwelling.",
+    "short.upgrade_name": "Short Pre-Heating/Cooling (2°, 1-Hour)",
+    "short_description": "Applies a shorter pre-conditioning period to shift a portion of HVAC energy use away from peak hours. This provides moderate demand reduction with limited comfort disruption."
+  }
+]

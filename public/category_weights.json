@@ -1,0 +1,209 @@
+[
+  {
+    "id": 1,
+    "upfrontCostRaw": 9250,
+    "upfrontCost": 0.74,
+    "paybackPeriod": "",
+    "comfort": 0.4,
+    "timeline": 0.4,
+    "invasiveness": 0.7
+  },
+  {
+    "id": 2,
+    "upfrontCostRaw": 6500,
+    "upfrontCost": 0.83,
+    "paybackPeriod": "",
+    "comfort": 0.4,
+    "timeline": 0.4,
+    "invasiveness": 0.6
+  },
+  {
+    "id": 3,
+    "upfrontCostRaw": 11500,
+    "upfrontCost": 0.67,
+    "paybackPeriod": "",
+    "comfort": 0.6,
+    "timeline": 0.6,
+    "invasiveness": 0.6
+  },
+  {
+    "id": 4,
+    "upfrontCostRaw": 11500,
+    "upfrontCost": 0.67,
+    "paybackPeriod": "",
+    "comfort": 0.8,
+    "timeline": 0.6,
+    "invasiveness": 0.8
+  },
+  {
+    "id": 5,
+    "upfrontCostRaw": 15000,
+    "upfrontCost": 0.56,
+    "paybackPeriod": "",
+    "comfort": 0.8,
+    "timeline": 0.6,
+    "invasiveness": 0.8
+  },
+  {
+    "id": 6,
+    "upfrontCostRaw": 25000,
+    "upfrontCost": 0.24,
+    "paybackPeriod": "",
+    "comfort": 1,
+    "timeline": 1,
+    "invasiveness": 1
+  },
+  {
+    "id": 7,
+    "upfrontCostRaw": 25000,
+    "upfrontCost": 0.24,
+    "paybackPeriod": "",
+    "comfort": 1,
+    "timeline": 1,
+    "invasiveness": 1
+  },
+  {
+    "id": 8,
+    "upfrontCostRaw": 28500,
+    "upfrontCost": 0.13,
+    "paybackPeriod": "",
+    "comfort": 1,
+    "timeline": 1,
+    "invasiveness": 1
+  },
+  {
+    "id": 9,
+    "upfrontCostRaw": 3000,
+    "upfrontCost": 0.94,
+    "paybackPeriod": "",
+    "comfort": 0.2,
+    "timeline": 0.4,
+    "invasiveness": 0.4
+  },
+  {
+    "id": 10,
+    "upfrontCostRaw": 1750,
+    "upfrontCost": 0.98,
+    "paybackPeriod": "",
+    "comfort": 0.2,
+    "timeline": 0.4,
+    "invasiveness": 0.4
+  },
+  {
+    "id": 11,
+    "upfrontCostRaw": 2000,
+    "upfrontCost": 0.98,
+    "paybackPeriod": "",
+    "comfort": 0.8,
+    "timeline": 0.4,
+    "invasiveness": 0.6
+  },
+  {
+    "id": 12,
+    "upfrontCostRaw": 2750,
+    "upfrontCost": 0.95,
+    "paybackPeriod": "",
+    "comfort": 0.8,
+    "timeline": 0.4,
+    "invasiveness": 0.6
+  },
+  {
+    "id": 13,
+    "upfrontCostRaw": 1500,
+    "upfrontCost": 0.99,
+    "paybackPeriod": "",
+    "comfort": 0.6,
+    "timeline": 0.4,
+    "invasiveness": 0.6
+  },
+  {
+    "id": 14,
+    "upfrontCostRaw": 5000,
+    "upfrontCost": 0.88,
+    "paybackPeriod": "",
+    "comfort": 0.6,
+    "timeline": 0.6,
+    "invasiveness": 0.8
+  },
+  {
+    "id": 15,
+    "upfrontCostRaw": 5500,
+    "upfrontCost": 0.86,
+    "paybackPeriod": "",
+    "comfort": 0.6,
+    "timeline": 0.6,
+    "invasiveness": 0.8
+  },
+  {
+    "id": 16,
+    "upfrontCostRaw": 8500,
+    "upfrontCost": 0.77,
+    "paybackPeriod": "",
+    "comfort": 0.8,
+    "timeline": 0.8,
+    "invasiveness": 1
+  },
+  {
+    "id": 17,
+    "upfrontCostRaw": 6325,
+    "upfrontCost": 0.84,
+    "paybackPeriod": "",
+    "comfort": 1,
+    "timeline": 0.8,
+    "invasiveness": 0.7
+  },
+  {
+    "id": 18,
+    "upfrontCostRaw": 32500,
+    "upfrontCost": 0,
+    "paybackPeriod": "",
+    "comfort": 1,
+    "timeline": 1,
+    "invasiveness": 1
+  },
+  {
+    "id": 24,
+    "upfrontCostRaw": 1250,
+    "upfrontCost": 1,
+    "paybackPeriod": "",
+    "comfort": 0.5,
+    "timeline": 0.2,
+    "invasiveness": 0.2
+  },
+  {
+    "id": 25,
+    "upfrontCostRaw": 1900,
+    "upfrontCost": 0.98,
+    "paybackPeriod": "",
+    "comfort": 0.5,
+    "timeline": 0.2,
+    "invasiveness": 0.2
+  },
+  {
+    "id": 26,
+    "upfrontCostRaw": 1900,
+    "upfrontCost": 0.98,
+    "paybackPeriod": "",
+    "comfort": 0.5,
+    "timeline": 0.2,
+    "invasiveness": 0.2
+  },
+  {
+    "id": 27,
+    "upfrontCostRaw": 2500,
+    "upfrontCost": 0.96,
+    "paybackPeriod": "",
+    "comfort": 0.5,
+    "timeline": 0.2,
+    "invasiveness": 0.2
+  },
+  {
+    "id": 28,
+    "upfrontCostRaw": 1550,
+    "upfrontCost": 0.99,
+    "paybackPeriod": "",
+    "comfort": 0.5,
+    "timeline": 0.2,
+    "invasiveness": 0.2
+  }
+]
