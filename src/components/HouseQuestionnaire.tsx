@@ -52,7 +52,7 @@ export function HouseQuestionnaire() {
         {
             id: "upfrontCost" as keyof UserPreferences,
             label: "Upfront Costs",
-            description: "How much of a priority is the upfront cost?",
+            description: "How much of a priority is limiting the upfront cost?",
             lowLabel: "Not a priority",
             highLabel: "Strong priority",
         },
