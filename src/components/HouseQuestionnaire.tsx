@@ -45,7 +45,7 @@ export function HouseQuestionnaire() {
         {
             id: "operatingCost" as keyof UserPreferences,
             label: "Operating Costs",
-            description: "How much of a priority are operating costs?",
+            description: "How much of a priority is limiting operating costs?",
             lowLabel: "Not a priority",
             highLabel: "Strong priority",
         },
