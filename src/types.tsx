@@ -2,9 +2,19 @@ export interface UserDetails {
     houseDetails: HouseDetails | null;
     preferences: UserPreferences | null;
 }
+
+export interface FuelConsumption {
+    naturalGas?: number; // therms or CCF
+    heatingOil?: number; // gallons
+    propane?: number; // gallons
+    wood?: number; // cords
+    electricity?: number; // kWh (already have this)
+}
+
 export interface HouseDetails {
     squareFootage: number;
     yearBuilt: number;
+    fuelConsumption?: FuelConsumption;
     annualEnergyConsumption: number;
     annualElectricityConsumption: number;
     annualUtilityBill: number;

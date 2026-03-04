@@ -9,6 +9,7 @@ import {
 } from "../ml/nearestNeighbor";
 
 import { scoreRetrofits } from "../ml/score";
+import { calculateTotalEnergyKwh } from "../utils/energyConversion";
 
 interface UserDetailsContextType {
     details: Partial<UserDetails>;

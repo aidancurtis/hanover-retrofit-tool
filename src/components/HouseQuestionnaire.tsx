@@ -14,6 +14,8 @@ import { ArrowLeft, ArrowRight, Home } from "lucide-react";
 import { useUserDetails } from "../context/UserDetailsContext";
 
 import { UserPreferences, HouseDetails } from "../types";
+import { FuelConsumption } from "../types";
+import { calculateTotalEnergyKwh } from "../utils/energyConversion";
 
 export function HouseQuestionnaire() {
     const navigate = useNavigate();
@@ -89,6 +91,25 @@ export function HouseQuestionnaire() {
         },
     ];
 
+    const handleFuelChange = (fuelId: string, value: number) => {
+        const updatedFuel: FuelConsumption = {
+            ...details.houseDetails?.fuelConsumption,
+            [fuelId]: value,
+        };
+
+        updateDetails({
+            houseDetails: {
+                squareFootage: 0,
+                yearBuilt: 0,
+                annualElectricityConsumption: 0,
+                annualUtilityBill: 0,
+                ...details.houseDetails,
+                fuelConsumption: updatedFuel,
+                annualEnergyConsumption: calculateTotalEnergyKwh(updatedFuel),
+            },
+        });
+    };
+
     const handlePreferenceChange = (
         questionId: keyof UserPreferences,
         value: number,
@@ -109,7 +130,6 @@ export function HouseQuestionnaire() {
             houseDetails: {
                 squareFootage: 0,
                 yearBuilt: 0,
-                annualEnergyConsumption: 0,
                 annualElectricityConsumption: 0,
                 annualUtilityBill: 0,
                 ...details.houseDetails,
@@ -268,20 +288,67 @@ export function HouseQuestionnaire() {
                         <Label htmlFor="annualEnergyConsumption">
                             Annual Energy Consumption (kWh)
                         </Label>
-                        <Input
-                            id="annualEnergyConsumption"
-                            type="number"
-                            placeholder="e.g., 50000"
-                            value={details.houseDetails?.annualEnergyConsumption || ""}
-                            onChange={(e) => {
-                                handleHouseDetailsChange(
-                                    "annualEnergyConsumption",
-                                    parseInt(e.target.value),
-                                );
-                                setErrors((prev) => ({ ...prev, yearBuilt: undefined }));
-                            }}
-                            className={errors.annualEnergyConsumption ? "border-red-500" : ""}
-                        />
+                        <div className="space-y-2">
+                            <h4 className="font-medium text-sm">Energy Sources</h4>
+                            <p className="text-xs text-muted-foreground">
+                                Enter what applies — we'll convert everything to kWh
+                                automatically.
+                            </p>
+                            {[
+                                {
+                                    id: "naturalGas",
+                                    label: "Natural Gas",
+                                    unit: "therms/year",
+                                    placeholder: "e.g., 400",
+                                },
+                                {
+                                    id: "heatingOil",
+                                    label: "Heating Oil",
+                                    unit: "gallons/year",
+                                    placeholder: "e.g., 200",
+                                },
+                                {
+                                    id: "propane",
+                                    label: "Propane",
+                                    unit: "gallons/year",
+                                    placeholder: "e.g., 100",
+                                },
+                                {
+                                    id: "wood",
+                                    label: "Firewood",
+                                    unit: "cords/year",
+                                    placeholder: "e.g., 2",
+                                },
+                            ].map(({ id, label, unit, placeholder }) => (
+                                <div key={id} className="flex items-center gap-3">
+                                    <Label className="w-28 shrink-0">{label}</Label>
+                                    <Input
+                                        type="number"
+                                        placeholder={placeholder}
+                                        value={details.houseDetails?.fuelConsumption?.[id] || ""}
+                                        onChange={(e) =>
+                                            handleFuelChange(id, parseFloat(e.target.value))
+                                        }
+                                        min="0"
+                                    />
+                                    <span className="text-sm text-muted-foreground w-28">
+                                        {unit}
+                                    </span>
+                                </div>
+                            ))}
+
+                            {/* Live kWh preview */}
+                            <p className="text-sm text-muted-foreground">
+                                Estimated total:{" "}
+                                <span className="font-medium text-foreground">
+                                    {calculateTotalEnergyKwh(
+                                        details.houseDetails?.fuelConsumption ?? {},
+                                    ).toLocaleString()}{" "}
+                                    kWh/year
+                                </span>
+                            </p>
+                        </div>
+
                         {errors.annualEnergyConsumption && (
                             <p className="text-sm text-red-500">
                                 {errors.annualEnergyConsumption}
