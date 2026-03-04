@@ -26,7 +26,7 @@ export function UserDetailsProvider({ children }: { children: ReactNode }) {
         buildingData,
         buildingDataStats,
         retrofitInfo,
-        retrofitPercentChange,
+        retrofitScoringWeights,
         categoryWeights,
         contractorData,
         loading,
@@ -64,7 +64,7 @@ export function UserDetailsProvider({ children }: { children: ReactNode }) {
         const bldg_id = nn[0].bldg_id;
 
         const scores = scoreRetrofits(
-            retrofitPercentChange,
+            retrofitScoringWeights,
             categoryWeights,
             bldg_id,
             details.preferences,

@@ -5,7 +5,7 @@ interface DatasetContextType {
     buildingData: any[];
     buildingDataStats: any | null;
     retrofitInfo: any[];
-    retrofitPercentChange: any[];
+    retrofitScoringWeights: any[];
     categoryWeights: any[];
     contractorData: any[];
     loading: boolean;
@@ -17,7 +17,9 @@ export function DatasetProvider({ children }: any) {
     const [buildingData, setBuildingData] = useState<any[]>([]);
     const [buildingDataStats, setBuildingDataStats] = useState<any | null>(null);
     const [retrofitInfo, setRetrofitInfo] = useState<any[]>([]);
-    const [retrofitPercentChange, setRetrofitPercentChange] = useState<any[]>([]);
+    const [retrofitScoringWeights, setRetrofitScoringWeights] = useState<any[]>(
+        [],
+    );
     const [categoryWeights, setCategoryWeights] = useState<any[]>([]);
     const [contractorData, setContractorData] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
@@ -28,14 +30,14 @@ export function DatasetProvider({ children }: any) {
                 const [a, b, c, d, e] = await Promise.all([
                     fetch("/cleaned_data.json").then((res) => res.json()),
                     fetch("/retrofit_info.json").then((res) => res.json()),
-                    fetch("/norm_percent_change.json").then((res) => res.json()),
+                    fetch("/scoring_weights.json").then((res) => res.json()),
                     fetch("/category_weights.json").then((res) => res.json()),
                     fetch("/contractor_data.json").then((res) => res.json()),
                 ]);
 
                 setBuildingData(a);
                 setRetrofitInfo(b);
-                setRetrofitPercentChange(c);
+                setRetrofitScoringWeights(c);
                 setCategoryWeights(d);
                 setContractorData(e);
 
@@ -59,7 +61,7 @@ export function DatasetProvider({ children }: any) {
                 buildingData,
                 buildingDataStats,
                 retrofitInfo,
-                retrofitPercentChange,
+                retrofitScoringWeights,
                 categoryWeights,
                 contractorData,
                 loading,

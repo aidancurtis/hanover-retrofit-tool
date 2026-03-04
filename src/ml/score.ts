@@ -77,13 +77,15 @@ function computeScore(
 }
 
 export function scoreRetrofits(
-    retrofitPercentChange: any[],
+    retrofitScoringWeights: any[],
     categoryWeights: any[],
     bldg_id: number,
     preferences: UserPreferences,
 ) {
     // Get row from retrofitPercentChange
-    const result = retrofitPercentChange.find((item) => item.bldg_id === bldg_id);
+    const result = retrofitScoringWeights.find(
+        (item) => item.bldg_id === bldg_id,
+    );
 
     // Map retrofits by id
     const map = new Map();
@@ -104,11 +106,13 @@ export function scoreRetrofits(
             emissions: result[`upgrade${id}_emissions`],
             operatingCost: result[`upgrade${id}_utility`],
             upfrontCost: item.upfrontCost,
-            paybackPeriod: 0,
+            paybackPeriod: result[`upgrade${id}_payback_period`],
             comfort: item.comfort,
             timeline: item.timeline,
             invasiveness: item.invasiveness,
         };
+
+        console.log(`Retrofit ${id} weights: `, retrofitWeights);
 
         const scores = computeScore(retrofitWeights, preferenceWeights);
 
@@ -121,5 +125,6 @@ export function scoreRetrofits(
     balancedROIScores.sort((a, b) => b[1] - a[1]);
     fastPracticalScores.sort((a, b) => b[1] - a[1]);
 
+    // console.log("Performance Scores: ", performanceScores);
     return { performanceScores, balancedROIScores, fastPracticalScores };
 }
