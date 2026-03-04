@@ -32,7 +32,11 @@ export function UserDetailsProvider({ children }: { children: ReactNode }) {
         loading,
     } = useDataset();
 
-    const [details, setDetails] = useState<Partial<UserDetails>>({});
+    const [details, setDetails] = useState<Partial<UserDetails>>({
+        preferences: null,
+        houseDetails: null,
+    });
+
     const [retrofitOptions, setRetrofitOptions] = useState<RetrofitCategory[]>(
         [],
     );

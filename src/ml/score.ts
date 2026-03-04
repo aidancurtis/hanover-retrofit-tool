@@ -112,7 +112,7 @@ export function scoreRetrofits(
             invasiveness: item.invasiveness,
         };
 
-        console.log(`Retrofit ${id} weights: `, retrofitWeights);
+        // console.log(`Retrofit ${id} weights: `, retrofitWeights);
 
         const scores = computeScore(retrofitWeights, preferenceWeights);
 

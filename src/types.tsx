@@ -1,6 +1,6 @@
 export interface UserDetails {
-    houseDetails: HouseDetails;
-    preferences: UserPreferences;
+    houseDetails: HouseDetails | null;
+    preferences: UserPreferences | null;
 }
 export interface HouseDetails {
     squareFootage: number;
@@ -11,14 +11,14 @@ export interface HouseDetails {
 }
 
 export interface UserPreferences {
-    energyConsumption: number;
-    emissions: number;
-    operatingCost: number;
-    upfrontCost: number;
-    paybackPeriod: number;
-    comfort: number;
-    timeline: number;
-    invasiveness: number;
+    energyConsumption: number | null;
+    emissions: number | null;
+    operatingCost: number | null;
+    upfrontCost: number | null;
+    paybackPeriod: number | null;
+    comfort: number | null;
+    timeline: number | null;
+    invasiveness: number | null;
 }
 
 export interface Retrofit {

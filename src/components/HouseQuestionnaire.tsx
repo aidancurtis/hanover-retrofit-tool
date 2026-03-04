@@ -95,14 +95,6 @@ export function HouseQuestionnaire() {
     ) => {
         updateDetails({
             preferences: {
-                energyConsumption: 0,
-                emissions: 0,
-                operatingCost: 0,
-                upfrontCost: 0,
-                paybackPeriod: 0,
-                comfort: 0,
-                timeline: 0,
-                invasiveness: 0,
                 ...details.preferences,
                 [questionId]: value,
             } as UserPreferences,
@@ -135,6 +127,8 @@ export function HouseQuestionnaire() {
             annualUtilityBill?: string;
             preferences?: string;
         } = {};
+
+        console.log("User Preferences: ", details.preferences);
 
         if (
             !details.houseDetails?.squareFootage ||
@@ -176,12 +170,13 @@ export function HouseQuestionnaire() {
         }
 
         const hasPreferenceError = comfortQuestions.some(
-            (item) => !details.preferences?.[item.id],
+            (item) => details.preferences?.[item.id] == null,
         );
 
         if (hasPreferenceError) {
             newErrors.preferences = "Please answer all preference questions";
         }
+
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors);
             window.scrollTo({ top: 0, behavior: "smooth" });
@@ -365,7 +360,7 @@ export function HouseQuestionnaire() {
 
                             <div className="space-y-2">
                                 <div className="flex justify-between items-center gap-2">
-                                    {[1, 2, 3, 4, 5].map((value) => (
+                                    {[0, 1, 2, 3, 4, 5].map((value) => (
                                         <button
                                             key={value}
                                             type="button"
