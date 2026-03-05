@@ -9,7 +9,6 @@ import {
 } from "../ml/nearestNeighbor";
 
 import { scoreRetrofits } from "../ml/score";
-import { calculateTotalEnergyKwh } from "../utils/energyConversion";
 
 interface UserDetailsContextType {
     details: Partial<UserDetails>;
@@ -76,6 +75,11 @@ export function UserDetailsProvider({ children }: { children: ReactNode }) {
         );
 
         const scenarios: RetrofitCategory[] = [];
+
+        if (scores == undefined) {
+            console.log("Scores undefined");
+            return;
+        }
 
         // Performance Retrofits
         const performanceRetrofits: Retrofit[] = scores.performanceScores

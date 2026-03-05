@@ -149,6 +149,7 @@ export function HouseQuestionnaire() {
         } = {};
 
         console.log("User Preferences: ", details.preferences);
+        console.log("User Home Details: ", details.houseDetails);
 
         if (
             !details.houseDetails?.squareFootage ||
