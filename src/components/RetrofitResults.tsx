@@ -26,6 +26,7 @@ export function RetrofitResults({ options }: RetrofitResultsProps) {
     const [expandedRetrofits, setExpandedRetrofits] = useState<Set<string>>(
         new Set(),
     );
+
     const toggleExpanded = (optionId: string, retrofitIndex: number) => {
         const key = `${optionId}-${retrofitIndex}`;
         setExpandedRetrofits((prev) => {
@@ -42,6 +43,7 @@ export function RetrofitResults({ options }: RetrofitResultsProps) {
     const isExpanded = (optionId: string, retrofitIndex: number) => {
         return expandedRetrofits.has(`${optionId}-${retrofitIndex}`);
     };
+
     const getCategoryIcon = (type: string) => {
         switch (type) {
             case "Performance":
@@ -175,6 +177,18 @@ export function RetrofitResults({ options }: RetrofitResultsProps) {
                                                         </div>
                                                     </div>
                                                 ))}
+                                            </div>
+                                            {/* Add this block below */}
+                                            <div className="mt-3 pt-2 border-t border-gray-200">
+                                                <a
+                                                    href="https://www.efficiencyvermont.com"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="inline-flex items-center gap-1 text-xs text-blue-600 hover:text-blue-800 hover:underline transition-colors"
+                                                >
+                                                    <ChevronDown className="w-3 h-3" />
+                                                    See More Contractors
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
