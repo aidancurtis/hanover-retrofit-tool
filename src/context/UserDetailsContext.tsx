@@ -94,28 +94,32 @@ export function UserDetailsProvider({ children }: { children: ReactNode }) {
             buildingData,
             userHouseSpecs,
             buildingDataStats,
-            3,
+            10,
         );
 
-        const bldg_id = nn[0].bldg_id;
+        console.log("Nearest Neighbors: ", nn);
+
+        const bldg_ids = nn.map((e) => e["bldg_id"]);
+
+        console.log("detailsprefs, ", details.preferences);
 
         const scores = scoreRetrofits(
             retrofitScoringWeights,
             categoryWeights,
-            bldg_id,
+            bldg_ids,
             details.preferences,
         );
-
-        const scenarios: RetrofitCategory[] = [];
 
         if (scores == undefined) {
             console.log("Scores undefined");
             return;
         }
 
-        // Performance Retrofits
-        const performanceRetrofits: Retrofit[] = scores.performanceScores
-            .slice(0, 3)
+        const scenarios: RetrofitCategory[] = [];
+
+        // Top scores from averages
+        const optimalRetrofitSuggestions: Retrofit[] = scores
+            .slice(0, 5)
             .map(([id, _]) => {
                 const retrofit = retrofitInfo.find((r) => {
                     const key = Object.keys(r).find((k) => k.includes("upgrade"));
@@ -138,87 +142,15 @@ export function UserDetailsProvider({ children }: { children: ReactNode }) {
             })
             .filter((r): r is Retrofit => r !== undefined);
 
-        const performance: RetrofitCategory = {
-            id: "1",
-            title: "Performance",
+        const optimalRetrofits: RetrofitCategory = {
+            id: "0",
+            title: "Top Retrofit Suggestions",
             description:
-                "Selected retrofits that offer the best performance based off your form responses",
-            includedRetrofits: performanceRetrofits,
+                "Selected retrofits based on combination of information from ResStock dataset and your preferences",
+            includedRetrofits: optimalRetrofitSuggestions,
         };
 
-        scenarios.push(performance);
-
-        // Balanced ROI Retrofits
-        const balancedROIScores: Retrofit[] = scores.balancedROIScores
-            .slice(0, 3)
-            .map(([id, _]) => {
-                const retrofit = retrofitInfo.find((r) => {
-                    const key = Object.keys(r).find((k) => k.includes("upgrade"));
-                    return key ? Number(r[key]) === Number(id) : false;
-                });
-
-                const contractor = contractorData.find((r) => {
-                    const key = Object.keys(r).find((k) => k.includes("id"));
-                    return key ? Number(r[key]) === Number(id) : false;
-                });
-
-                if (!retrofit) return undefined;
-                return {
-                    id: retrofit["upgrade"],
-                    title: retrofit["short.upgrade_name"],
-                    shortDescription: retrofit["short_description"],
-                    longDescription: retrofit["long_description"],
-                    includedRetrofits: [],
-                    contractors: [contractor],
-                } as Retrofit;
-            })
-            .filter((r): r is Retrofit => r !== undefined);
-
-        const balancedROI: RetrofitCategory = {
-            id: "2",
-            title: "Balanced ROI",
-            description:
-                "Selected retrofits that offer the best return on investment based off your form responses",
-            includedRetrofits: balancedROIScores,
-        };
-
-        scenarios.push(balancedROI);
-
-        // Fast and Practical Retrofits
-        const fastPracticalRetrofits: Retrofit[] = scores.fastPracticalScores
-            .slice(0, 3)
-            .map(([id, _]) => {
-                const retrofit = retrofitInfo.find((r) => {
-                    const key = Object.keys(r).find((k) => k.includes("upgrade"));
-                    return key ? Number(r[key]) === Number(id) : false;
-                });
-
-                const contractor = contractorData.find((r) => {
-                    const key = Object.keys(r).find((k) => k.includes("id"));
-                    return key ? Number(r[key]) === Number(id) : false;
-                });
-
-                if (!retrofit) return undefined;
-                return {
-                    id: retrofit["upgrade"],
-                    title: retrofit["short.upgrade_name"],
-                    shortDescription: retrofit["short_description"],
-                    longDescription: retrofit["long_description"],
-                    includedRetrofits: [],
-                    contractors: [contractor],
-                } as Retrofit;
-            })
-            .filter((r): r is Retrofit => r !== undefined);
-
-        const fastPractical: RetrofitCategory = {
-            id: "3",
-            title: "Fast and Practical",
-            description:
-                "Selected retrofits that are the most fast and practical based off your form responses",
-            includedRetrofits: fastPracticalRetrofits,
-        };
-
-        scenarios.push(fastPractical);
+        scenarios.push(optimalRetrofits);
 
         setRetrofitOptions(scenarios);
     };

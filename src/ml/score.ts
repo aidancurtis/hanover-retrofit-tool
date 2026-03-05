@@ -1,73 +1,66 @@
 import { UserPreferences } from "../types";
 
 function computeWeights(preferences: UserPreferences) {
-    const weights: UserPreferences = {
-        energyConsumption: 0,
-        emissions: 0,
-        operatingCost: 0,
-        upfrontCost: 0,
-        paybackPeriod: 0,
-        comfort: 0,
-        timeline: 0,
-        invasiveness: 0,
-    };
-
+    console.log(preferences);
     if (
         preferences.energyConsumption == null ||
         preferences.emissions == null ||
-        preferences.operatingCost == null ||
-        preferences.upfrontCost == null ||
-        preferences.paybackPeriod == null ||
-        preferences.comfort == null ||
-        preferences.timeline == null ||
-        preferences.invasiveness == null
+        preferences.operatingCost == null
     ) {
         return;
     }
 
-    // Performance weights
-    const perfSum = preferences.energyConsumption + preferences.emissions;
-    if (perfSum !== 0) {
-        weights.energyConsumption = preferences.energyConsumption / perfSum;
-        weights.emissions = preferences.emissions / perfSum;
-    }
+    const preferencesSum =
+        preferences.energyConsumption +
+        preferences.emissions +
+        preferences.operatingCost;
 
-    // Financial weights
-    const finSum =
-        preferences.operatingCost +
-        preferences.upfrontCost +
-        preferences.paybackPeriod;
-    if (finSum !== 0) {
-        weights.operatingCost = preferences.operatingCost / finSum;
-        weights.upfrontCost = preferences.upfrontCost / finSum;
-        weights.paybackPeriod = preferences.paybackPeriod / finSum;
-    }
+    const weights = {
+        energyConsumption: preferences.energyConsumption / preferencesSum,
+        emissions: preferences.emissions / preferencesSum,
+        utility: preferences.operatingCost / preferencesSum,
+    };
 
-    // Practicality weights
-    const pracSum =
-        preferences.comfort + preferences.timeline + preferences.invasiveness;
-    if (pracSum !== 0) {
-        weights.comfort = preferences.comfort / pracSum;
-        weights.timeline = preferences.timeline / pracSum;
-        weights.invasiveness = preferences.invasiveness / pracSum;
-    }
+    console.log("Weights: ", weights);
+
+    // // Performance weights
+    // const perfSum = preferences.energyConsumption + preferences.emissions;
+    // if (perfSum !== 0) {
+    //     weights.energyConsumption = preferences.energyConsumption / perfSum;
+    //     weights.emissions = preferences.emissions / perfSum;
+    // }
+    //
+    // // Financial weights
+    // const finSum =
+    //     preferences.operatingCost +
+    //     preferences.upfrontCost +
+    //     preferences.paybackPeriod;
+    // if (finSum !== 0) {
+    //     weights.operatingCost = preferences.operatingCost / finSum;
+    //     weights.upfrontCost = preferences.upfrontCost / finSum;
+    //     weights.paybackPeriod = preferences.paybackPeriod / finSum;
+    // }
+    //
+    // // Practicality weights
+    // const pracSum =
+    //     preferences.comfort + preferences.timeline + preferences.invasiveness;
+    // if (pracSum !== 0) {
+    //     weights.comfort = preferences.comfort / pracSum;
+    //     weights.timeline = preferences.timeline / pracSum;
+    //     weights.invasiveness = preferences.invasiveness / pracSum;
+    // }
 
     return weights;
 }
 
 function computeScore(
-    retrofitWeights: UserPreferences,
-    preferenceWeights: UserPreferences,
+    retrofitWeights: Record<string, number>,
+    preferenceWeights: Record<string, number>,
 ) {
     if (
         retrofitWeights.energyConsumption == null ||
         retrofitWeights.emissions == null ||
-        retrofitWeights.operatingCost == null ||
-        retrofitWeights.upfrontCost == null ||
-        retrofitWeights.paybackPeriod == null ||
-        retrofitWeights.comfort == null ||
-        retrofitWeights.timeline == null ||
-        retrofitWeights.invasiveness == null
+        retrofitWeights.utility == null
     ) {
         console.log("Retrofit weights null");
         return;
@@ -76,53 +69,34 @@ function computeScore(
     if (
         preferenceWeights.energyConsumption == null ||
         preferenceWeights.emissions == null ||
-        preferenceWeights.operatingCost == null ||
-        preferenceWeights.upfrontCost == null ||
-        preferenceWeights.paybackPeriod == null ||
-        preferenceWeights.comfort == null ||
-        preferenceWeights.timeline == null ||
-        preferenceWeights.invasiveness == null
+        preferenceWeights.utility == null
     ) {
-        console.log("Retrofit weights null");
+        console.log("Preference weights null");
         return;
     }
 
     // console.log("Retrofit weights: ", retrofitWeights);
     // console.log("Preference weights: ", preferenceWeights);
 
-    const perf =
-        preferenceWeights.energyConsumption * retrofitWeights.energyConsumption +
-        preferenceWeights.emissions * retrofitWeights.emissions;
+    const score = Object.keys(retrofitWeights).reduce((sum, key) => {
+        return sum + retrofitWeights[key] * (preferenceWeights[key] ?? 0);
+    }, 0);
 
-    const fin =
-        preferenceWeights.operatingCost * retrofitWeights.operatingCost +
-        preferenceWeights.upfrontCost * retrofitWeights.upfrontCost +
-        preferenceWeights.paybackPeriod * retrofitWeights.paybackPeriod;
-
-    const prac =
-        preferenceWeights.timeline * retrofitWeights.timeline +
-        preferenceWeights.invasiveness * retrofitWeights.invasiveness +
-        preferenceWeights.comfort * retrofitWeights.comfort;
-
-    // console.log("Perf: ", perf);
-
-    const performance = 0.7 * perf + 0.1 * fin + 0.2 * prac;
-    const balancedROI = 0.3 * perf + 0.5 * fin + 0.2 * prac;
-    const fastPractical = 0.2 * perf + 0.2 * fin + 0.6 * prac;
-
-    return { performance, balancedROI, fastPractical };
+    return score;
 }
 
 export function scoreRetrofits(
     retrofitScoringWeights: any[],
     categoryWeights: any[],
-    bldg_id: number,
+    bldg_ids: any[],
     preferences: UserPreferences,
 ) {
     // Get row from retrofitPercentChange
-    const result = retrofitScoringWeights.find(
-        (item) => item.bldg_id === bldg_id,
+    const results = bldg_ids.map((bldg_id) =>
+        retrofitScoringWeights.find((item) => item.bldg_id === bldg_id),
     );
+
+    console.log("Results: ", results);
 
     // Map retrofits by id
     const map = new Map();
@@ -136,47 +110,87 @@ export function scoreRetrofits(
         return;
     }
 
-    let performanceScores: number[][] = [];
-    let balancedROIScores: number[][] = [];
-    let fastPracticalScores: number[][] = [];
+    let scores: Record<number, number[]> = {};
 
-    for (const id of map.keys()) {
-        const item = map.get(id);
+    for (const res of results) {
+        for (const id of map.keys()) {
+            const item = map.get(id);
 
-        const retrofitWeights: UserPreferences = {
-            energyConsumption: result[`upgrade${id}_energy`],
-            emissions: result[`upgrade${id}_emissions`],
-            operatingCost: result[`upgrade${id}_utility`],
-            upfrontCost: item.upfrontCost,
-            paybackPeriod: result[`upgrade${id}_payback_period`],
-            comfort: item.comfort,
-            timeline: item.timeline,
-            invasiveness: item.invasiveness,
-        };
+            // const energyConsumption = results.map((res) => res[`upgrade${id}_energy`]);
+            // const energyConsumptionAvg =
+            //     energyConsumption.reduce((sum, val) => sum + val, 0) /
+            //     energyConsumption.length;
+            //
+            // const emissionsConsumption = results.map(
+            //     (res) => res[`upgrade${id}_emissions`],
+            // );
+            // const emissionsConsumptionAvg =
+            //     emissionsConsumption.reduce((sum, val) => sum + val, 0) /
+            //     energyConsumption.length;
+            //
+            // const utility = results.map((res) => res[`upgrade${id}_utility`]);
+            // const utilityAvg =
+            //     utility.reduce((sum, val) => sum + val, 0) / energyConsumption.length;
+            //
+            //
 
-        // console.log(`Retrofit ${id} weights: `, retrofitWeights);
+            // console.log("Res: ", res);
+            const energyConsumption = res[`upgrade${id}_energy`];
+            const emissionsConsumption = res[`upgrade${id}_emissions`];
+            const utility = res[`upgrade${id}_utility`];
 
-        const scores = computeScore(retrofitWeights, preferenceWeights);
+            const retrofitWeights = {
+                energyConsumption: energyConsumption,
+                emissions: emissionsConsumption,
+                utility: utility,
+            };
 
-        // console.log(`Scores Upgrade ${id}: `, scores);
+            const score = computeScore(retrofitWeights, preferenceWeights);
 
-        if (scores == undefined) {
-            console.log("Score undefined");
-            return;
+            if (score == 1 || score == undefined) {
+                console.log(`Retrofit ${id} score 1`);
+                continue;
+            }
+
+            console.log(`Score Upgrade ${id}: `, score);
+
+            if (scores == undefined) {
+                console.log("Score undefined");
+                return;
+            }
+
+            if (!scores[id]) {
+                scores[id] = [];
+            }
+
+            if (scores[id].length < 5) {
+                scores[id].push(score);
+            }
         }
-
-        performanceScores.push([id, scores.performance]);
-        balancedROIScores.push([id, scores.balancedROI]);
-        fastPracticalScores.push([id, scores.fastPractical]);
     }
 
-    performanceScores.sort((a, b) => b[1] - a[1]);
-    balancedROIScores.sort((a, b) => b[1] - a[1]);
-    fastPracticalScores.sort((a, b) => b[1] - a[1]);
+    console.log("Raw scores: ", scores);
 
-    console.log("Performance Scores: ", performanceScores);
-    console.log("Balanced ROI Scores: ", balancedROIScores);
-    console.log("Fast and Practical Scores: ", fastPracticalScores);
+    const averagedScores: [number, number][] = Object.entries(scores).map(
+        ([key, scoreList]) => {
+            const average =
+                scoreList.reduce((sum, val) => sum + val, 0) / scoreList.length;
+            return [Number(key), average];
+        },
+    );
 
-    return { performanceScores, balancedROIScores, fastPracticalScores };
+    const allowedIds = [18, 6, 7, 8];
+
+    const firstMatch = averagedScores.find(([key]) => allowedIds.includes(key));
+
+    const filteredScores = averagedScores.filter(
+        ([key]) => !allowedIds.includes(key) || key === firstMatch?.[0],
+    );
+
+    filteredScores.sort((a, b) => b[1] - a[1]);
+
+    console.log("Averaged scores: ", averagedScores);
+    console.log("Filtered scores: ", filteredScores);
+
+    return filteredScores;
 }

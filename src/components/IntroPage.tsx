@@ -12,7 +12,7 @@ export function IntroPage() {
             </div>
 
             <div className="space-y-4">
-                <h1 className="text-4xl">Hanover Home Retrofit Tool</h1>
+                <h1 className="text-4xl">Upper Valley Upgrades</h1>
                 <p className="text-xl text-muted-foreground max-w-xl mx-auto">
                     Get personalized energy-saving recommendations with local contractor
                     information
