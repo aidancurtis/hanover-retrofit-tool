@@ -404,7 +404,8 @@ export function HouseQuestionnaire() {
                     {/* Electricity Consumption */}
                     <div className="space-y-2">
                         <Label htmlFor="annualElectricityConsumption">
-                            Annual Electricity Consumption (kWh)
+                            Annual Electricity Consumption (kWh){" "}
+                            <span className="text-red-500">*</span>
                         </Label>
                         <Input
                             id="annualElectricityConsumption"
@@ -431,7 +432,9 @@ export function HouseQuestionnaire() {
 
                     {/* Utility Bill */}
                     <div className="space-y-2">
-                        <Label htmlFor="annualUtilityBill">Annual Utility Bill ($)</Label>
+                        <Label htmlFor="annualUtilityBill">
+                            Annual Utility Bill ($) <span className="text-red-500">*</span>
+                        </Label>
                         <Input
                             id="annualUtilityBill"
                             type="number"
