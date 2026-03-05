@@ -146,7 +146,7 @@ export function UserDetailsProvider({ children }: { children: ReactNode }) {
             id: "0",
             title: "Top Retrofit Suggestions",
             description:
-                "Selected retrofits based on combination of information from ResStock dataset and your preferences",
+                "Selected retrofits based on combination of information from the ResStock 2025 dataset and your preferences",
             includedRetrofits: optimalRetrofitSuggestions,
         };
 

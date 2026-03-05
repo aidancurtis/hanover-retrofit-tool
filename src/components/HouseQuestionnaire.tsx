@@ -337,7 +337,7 @@ export function HouseQuestionnaire() {
                                 Energy Sources for Heating (Optional)
                             </h4>
                             <p className="text-xs text-muted-foreground">
-                                Not required, but will make our suggestions more accurate.
+                                Not required, but will make the suggestions more accurate.
                             </p>
                             {[
                                 {
