@@ -1,12 +1,20 @@
 import { Card } from "./ui/card";
+import { Button } from "./ui/button";
 import {
-    DollarSign,
     TrendingDown,
     Leaf,
     Zap,
     Phone,
+    Mail,
     Wrench,
+    DollarSign,
+    Send,
+    ChevronDown,
+    ChevronUp,
 } from "lucide-react";
+import { generateRetrofitPDF } from "./PDFExport";
+import { useUserDetails } from "../context/UserDetailsContext";
+import { useState } from "react";
 
 import { RetrofitCategory } from "../types";
 
@@ -15,6 +23,25 @@ interface RetrofitResultsProps {
 }
 
 export function RetrofitResults({ options }: RetrofitResultsProps) {
+    const [expandedRetrofits, setExpandedRetrofits] = useState<Set<string>>(
+        new Set(),
+    );
+    const toggleExpanded = (optionId: string, retrofitIndex: number) => {
+        const key = `${optionId}-${retrofitIndex}`;
+        setExpandedRetrofits((prev) => {
+            const newSet = new Set(prev);
+            if (newSet.has(key)) {
+                newSet.delete(key);
+            } else {
+                newSet.add(key);
+            }
+            return newSet;
+        });
+    };
+
+    const isExpanded = (optionId: string, retrofitIndex: number) => {
+        return expandedRetrofits.has(`${optionId}-${retrofitIndex}`);
+    };
     const getCategoryIcon = (type: string) => {
         switch (type) {
             case "Performance":
@@ -77,11 +104,35 @@ export function RetrofitResults({ options }: RetrofitResultsProps) {
                                             <div className="flex-1">
                                                 <h5 className="font-semibold mb-1">{retrofit.title}</h5>
                                                 <p className="text-sm text-muted-foreground">
-                                                    {retrofit.description}
+                                                    {retrofit.shortDescription}
                                                 </p>
+                                                {/* Expandable Long Description */}
+                                                {isExpanded(option.id, index) && (
+                                                    <div className="mt-3 text-sm text-gray-700 leading-relaxed">
+                                                        {retrofit.longDescription}
+                                                    </div>
+                                                )}
+
+                                                <Button
+                                                    variant="ghost"
+                                                    size="sm"
+                                                    className="mt-2 h-auto p-0 text-xs text-blue-600 hover:text-blue-800 hover:bg-transparent"
+                                                    onClick={() => toggleExpanded(option.id, index)}
+                                                >
+                                                    {isExpanded(option.id, index) ? (
+                                                        <>
+                                                            <ChevronUp className="w-3 h-3 mr-1" />
+                                                            See Less
+                                                        </>
+                                                    ) : (
+                                                        <>
+                                                            <ChevronDown className="w-3 h-3 mr-1" />
+                                                            See More
+                                                        </>
+                                                    )}
+                                                </Button>
                                             </div>
                                         </div>
-
                                         {/* Contractors for this retrofit */}
                                         <div className="pt-3 border-t">
                                             <div className="flex items-center gap-2 mb-2">

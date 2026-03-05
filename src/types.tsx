@@ -8,12 +8,13 @@ export interface FuelConsumption {
     heatingOil?: number; // gallons
     propane?: number; // gallons
     wood?: number; // cords
-    electricity?: number; // kWh (already have this)
+    electricity?: number; // kWh
 }
 
 export interface HouseDetails {
     squareFootage: number;
     yearBuilt: number;
+    primaryHeatingSource?: string;
     fuelConsumption?: FuelConsumption;
     annualEnergyConsumption: number;
     annualElectricityConsumption: number;
@@ -34,7 +35,8 @@ export interface UserPreferences {
 export interface Retrofit {
     id: number;
     title: string;
-    description: string;
+    shortDescription: string;
+    longDescription: string;
     contractors: Contractor[];
 }
 

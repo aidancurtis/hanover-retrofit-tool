@@ -54,6 +54,38 @@ export function UserDetailsProvider({ children }: { children: ReactNode }) {
         if (!details.houseDetails) return;
         if (!details.preferences) return;
 
+        const fuelValues = Object.values(
+            details.houseDetails.fuelConsumption ?? {},
+        );
+        const allEmpty =
+            fuelValues.length === 0 || fuelValues.every((v) => !v && v !== false);
+
+        if (allEmpty) {
+            switch (details.houseDetails.primaryHeatingSource) {
+                case "natural-gas":
+                    details.houseDetails.annualEnergyConsumption =
+                        20.98 * details.houseDetails.squareFootage;
+                    break;
+                case "oil":
+                    details.houseDetails.annualEnergyConsumption =
+                        18.87 * details.houseDetails.squareFootage;
+                    break;
+                case "propane":
+                    details.houseDetails.annualEnergyConsumption =
+                        19.71 * details.houseDetails.squareFootage;
+                    break;
+                case "wood":
+                    details.houseDetails.annualEnergyConsumption =
+                        5.35 * details.houseDetails.squareFootage;
+                    break;
+                default:
+                    console.log("Primary heating source is unknown or not set");
+                    break;
+            }
+        }
+
+        console.log(details.houseDetails.annualEnergyConsumption);
+
         // Convert user data
         const userHouseSpecs = mapHouseDetailsToFeatureRow(details.houseDetails);
 
@@ -99,7 +131,8 @@ export function UserDetailsProvider({ children }: { children: ReactNode }) {
                 return {
                     id: retrofit["upgrade"],
                     title: retrofit["short.upgrade_name"],
-                    description: retrofit["short_description"],
+                    shortDescription: retrofit["short_description"],
+                    longDescription: retrofit["long_description"],
                     contractors: [contractor],
                 } as Retrofit;
             })
@@ -133,7 +166,8 @@ export function UserDetailsProvider({ children }: { children: ReactNode }) {
                 return {
                     id: retrofit["upgrade"],
                     title: retrofit["short.upgrade_name"],
-                    description: retrofit["short_description"],
+                    shortDescription: retrofit["short_description"],
+                    longDescription: retrofit["long_description"],
                     includedRetrofits: [],
                     contractors: [contractor],
                 } as Retrofit;
@@ -168,7 +202,8 @@ export function UserDetailsProvider({ children }: { children: ReactNode }) {
                 return {
                     id: retrofit["upgrade"],
                     title: retrofit["short.upgrade_name"],
-                    description: retrofit["short_description"],
+                    shortDescription: retrofit["short_description"],
+                    longDescription: retrofit["long_description"],
                     includedRetrofits: [],
                     contractors: [contractor],
                 } as Retrofit;

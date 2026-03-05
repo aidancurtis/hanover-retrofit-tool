@@ -10,10 +10,10 @@ const KWH_PER_UNIT = {
 
 export function calculateTotalEnergyKwh(fuel: FuelConsumption): number {
     return (
-        (fuel.naturalGas ?? 0) * KWH_PER_UNIT.naturalGas +
-        (fuel.heatingOil ?? 0) * KWH_PER_UNIT.heatingOil +
-        (fuel.propane ?? 0) * KWH_PER_UNIT.propane +
-        (fuel.wood ?? 0) * KWH_PER_UNIT.wood +
-        (fuel.electricity ?? 0) // already in kWh
+        (fuel.naturalGas || 0) * KWH_PER_UNIT.naturalGas +
+        (fuel.heatingOil || 0) * KWH_PER_UNIT.heatingOil +
+        (fuel.propane || 0) * KWH_PER_UNIT.propane +
+        (fuel.wood || 0) * KWH_PER_UNIT.wood +
+        (fuel.electricity || 0) // already in kWh
     );
 }

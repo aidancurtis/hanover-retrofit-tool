@@ -10,6 +10,13 @@ import {
 import { Button } from "./ui/button";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "./ui/select";
 import { ArrowLeft, ArrowRight, Home } from "lucide-react";
 import { useUserDetails } from "../context/UserDetailsContext";
 
@@ -24,6 +31,7 @@ export function HouseQuestionnaire() {
     const [errors, setErrors] = useState<{
         squareFootage?: string;
         yearBuilt?: string;
+        primaryHeatingSource?: string;
         annualEnergyConsumption?: string;
         annualElectricityConsumption?: string;
         annualUtilityBill?: string;
@@ -124,7 +132,7 @@ export function HouseQuestionnaire() {
 
     const handleHouseDetailsChange = (
         questionId: keyof HouseDetails,
-        value: number,
+        value: number | string,
     ) => {
         updateDetails({
             houseDetails: {
@@ -142,7 +150,7 @@ export function HouseQuestionnaire() {
         const newErrors: {
             squareFootage?: string;
             yearBuilt?: string;
-            annualEnergyConsumption?: string;
+            primaryHeatingSource?: string;
             annualElectricityConsumption?: string;
             annualUtilityBill?: string;
             preferences?: string;
@@ -158,20 +166,16 @@ export function HouseQuestionnaire() {
             newErrors.squareFootage = "Please enter a valid square footage";
         }
 
-        if (
-            !details.houseDetails?.annualEnergyConsumption ||
-            details.houseDetails.annualEnergyConsumption <= 0
-        ) {
-            newErrors.annualEnergyConsumption =
-                "Please enter a valid annual energy consumption";
-        }
+        // if (
+        //     !details.houseDetails?.annualEnergyConsumption ||
+        //     details.houseDetails.annualEnergyConsumption <= 0
+        // ) {
+        //     newErrors.annualEnergyConsumption =
+        //         "Please enter a valid annual energy consumption";
+        // }
 
-        if (
-            !details.houseDetails?.annualElectricityConsumption ||
-            details.houseDetails.annualElectricityConsumption <= 0
-        ) {
-            newErrors.annualElectricityConsumption =
-                "Please enter a valid annual electricity consumption";
+        if (!details.houseDetails?.primaryHeatingSource) {
+            newErrors.primaryHeatingSource = "Please select a primary heating source";
         }
 
         if (
@@ -237,7 +241,9 @@ export function HouseQuestionnaire() {
                     </h3>
 
                     <div className="space-y-2">
-                        <Label htmlFor="squareFootage">Square Footage</Label>
+                        <Label htmlFor="squareFootage">
+                            Square Footage <span className="text-red-500">*</span>
+                        </Label>
                         <Input
                             id="squareFootage"
                             type="number"
@@ -262,7 +268,9 @@ export function HouseQuestionnaire() {
                     </div>
 
                     <div className="space-y-2">
-                        <Label htmlFor="yearBuilt">Year Built</Label>
+                        <Label htmlFor="yearBuilt">
+                            Year Built <span className="text-red-500">*</span>
+                        </Label>
                         <Input
                             id="yearBuilt"
                             type="number"
@@ -285,15 +293,51 @@ export function HouseQuestionnaire() {
                     </div>
 
                     {/* Energy Consumption */}
-                    <div className="space-y-2">
+                    <div className="space-y-4">
                         <Label htmlFor="annualEnergyConsumption">
                             Annual Energy Consumption (kWh)
                         </Label>
                         <div className="space-y-2">
-                            <h4 className="font-medium text-sm">Energy Sources</h4>
+                            <Label htmlFor="heatingSystem">
+                                Primary Heating System <span className="text-red-500">*</span>
+                            </Label>
+                            <Select
+                                value={details.houseDetails?.primaryHeatingSource ?? ""}
+                                onValueChange={(val) => {
+                                    handleHouseDetailsChange("primaryHeatingSource", val);
+                                    setErrors((prev) => ({
+                                        ...prev,
+                                        primaryHeatSource: undefined,
+                                    }));
+                                }}
+                            >
+                                <SelectTrigger
+                                    id="heatingSystem"
+                                    className={
+                                        errors.primaryHeatingSource ? "border-red-500" : ""
+                                    }
+                                >
+                                    <SelectValue placeholder="Select your heating system" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="natural-gas">Natural Gas</SelectItem>
+                                    <SelectItem value="oil">Oil</SelectItem>
+                                    <SelectItem value="propane">Propane</SelectItem>
+                                    <SelectItem value="wood">Wood</SelectItem>
+                                </SelectContent>
+                            </Select>
+                            {errors.primaryHeatingSource && (
+                                <p className="text-sm text-red-500">
+                                    {errors.primaryHeatingSource}
+                                </p>
+                            )}
+                        </div>
+                        <div className="space-y-2">
+                            <h4 className="font-medium text-sm">
+                                Energy Sources for Heating (Optional)
+                            </h4>
                             <p className="text-xs text-muted-foreground">
-                                Enter what applies — we'll convert everything to kWh
-                                automatically.
+                                Not required, but will make our suggestions more accurate.
                             </p>
                             {[
                                 {
